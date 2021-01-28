@@ -3,15 +3,17 @@ const canvas = document.getElementById('canvas1')
 const ctx = canvas.getContext('2d')
 canvas.width =800;
 canvas.height= 500;
-
+ctx.font = '50px Georgia';
 let score = 0;
 let gameFrame = 0;
-ctx.font = '50px Georgia';
+
 let gameSpeed = 1;
 let gameOver=false;
 let SecondPlayerSprite=false;
 let ThirdPlayerSprite=false;
 let musicOn=true;
+
+let againBtn=document.getElementById('againBtn')
 
 //Mouse interactivity
 let canvasPosition = canvas.getBoundingClientRect();
@@ -292,17 +294,37 @@ function handleEnemies(){
     }
 };
 
+
 function handleGameOver(){
     death.play()
     ctx.fillStyle= 'white';
     ctx.fillText('you score: '+ score, 270, 250);
     gameOver=true;
+    againBtn.style.visibility= 'visible';
 }
 function win(){
     winSound.play()
     ctx.fillStyle= 'white';
     ctx.fillText('you are winner!', 260, 250);
     gameOver=true;
+    againBtn.style.visibility= 'visible';
+}
+function again(){
+    score = 0;
+    player.x=10
+    player.y=canvas.height/2
+    mouse.x=70
+    mouse.y=canvas.height/2
+    gameFrame = 0;
+    gameSpeed = 1;
+    gameOver=false;
+    SecondPlayerSprite=false;
+    ThirdPlayerSprite=false;
+    flag= true
+    flag2= true
+    console.log('zanovo');
+    animate()
+    againBtn.style.visibility= 'hidden';
 }
 let flag= true
 let flag2= true

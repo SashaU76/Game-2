@@ -19,3 +19,7 @@ body {
   position: absolute;
   transform: translateY(-300px);
 }
+#againBtn {
+  visibility: hidden;
+  transform: translateX(430px) translateY(50px);
+}
